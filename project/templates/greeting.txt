@@ -1,5 +1,5 @@
 
-$robot_nameです。
+$greeting $robot_nameです。
 今日は、$time　です。
 
 あなたの名前はなんですか？

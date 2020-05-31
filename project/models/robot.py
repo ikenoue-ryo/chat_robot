@@ -22,20 +22,21 @@ class Robot(object):
             day = date_time + now_w
 
             #あいさつ
-            if today.hour < 4:
-                good_night = print('こんばんは')
-            elif 4 <= today.hour < 10:
-                good_morning = print('おはよう')
+            if 4 <= today.hour <= 10:
+                greeting = 'おはよう！'
+            elif 10 < today.hour <= 18:
+                greeting = 'こんにちは！'
             else:
-                good_afternoon = print('こんにちは')
-            # if currentTime.hour < 12
+                greeting = 'こんばんは！'
+
 
             # ロボットの挨拶と入力待ち受け
             template = console.get_file_path('greeting.txt')
             user_name = input(template.substitute({
                 'robot_name': self.robot_name,
                 'user_name': self.user_name,
-                'time': day
+                'time': day,
+                'greeting': greeting
             }))
             # 入力文字の大文字化
             if user_name:
