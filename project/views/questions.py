@@ -11,4 +11,3 @@ def some_questions(user_login):
     print('質問は以上です。ありがとうございました。\n')
     db.save(user_info)
     return user_info
-

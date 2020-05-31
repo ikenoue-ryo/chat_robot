@@ -35,8 +35,9 @@ class Robot(object):
                 persons = db.session.query(db.Person).filter_by(user_name=self.user_name)
                 for person in persons:
                     if self.user_name == person.user_name:
-                        print('すでに登録されています。')
-                        sys.exit()
+                        print(self.user_name +'さん、おかえりなさい\n')
+                        # sys.exit()
+                        break
                     break
                 break
 
