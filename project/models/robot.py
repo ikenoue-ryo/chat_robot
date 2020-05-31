@@ -1,6 +1,5 @@
 import datetime
 import locale
-import sys
 
 from project.DB import db
 from project.views import console, questions, doing
@@ -17,10 +16,19 @@ class Robot(object):
         while True:
             #日付と曜日の取得
             today = datetime.datetime.now()
-            date_time = today.strftime("%Y年%m月%d日")
+            date_time = today.strftime("%Y年%m月%d日 ")
             locale.setlocale(locale.LC_TIME, 'ja_JP.UTF-8')
             now_w = "{0:%A}".format(today)
             day = date_time + now_w
+
+            #あいさつ
+            if today.hour < 4:
+                good_night = print('こんばんは')
+            elif 4 <= today.hour < 10:
+                good_morning = print('おはよう')
+            else:
+                good_afternoon = print('こんにちは')
+            # if currentTime.hour < 12
 
             # ロボットの挨拶と入力待ち受け
             template = console.get_file_path('greeting.txt')
@@ -36,7 +44,6 @@ class Robot(object):
                 for person in persons:
                     if self.user_name == person.user_name:
                         print(self.user_name +'さん、おかえりなさい\n')
-                        # sys.exit()
                         break
                     break
                 break

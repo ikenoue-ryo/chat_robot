@@ -1,12 +1,14 @@
 import requests
+import datetime
+import locale
 import os
 
 from project.DB import db
-from project.views import questions
+import settings
 
 def tenki_api():
      city_name = input('入力例: Tokyo\n')
-     app_id = 'API KYE'
+     app_id = settings.API_KEY
      URL = "https://api.openweathermap.org/data/2.5/weather?q={0},jp&units=metric&lang=ja&appid={1}".format(city_name, app_id)
 
      response = requests.get(URL)
@@ -17,12 +19,22 @@ def tenki_api():
      temp_min = data["main"]["temp_min"]  # 寒暖差
      diff_temp = temp_max - temp_min  # 湿度
      humidity = data["main"]["humidity"]
+     # 日付と曜日の取得
+     today = datetime.datetime.now()
+     date_time = today.strftime("%Y年%m月%d日 ")
+     locale.setlocale(locale.LC_TIME, 'ja_JP.UTF-8')
+     now_w = "{0:%A}".format(today)
+     day = date_time + now_w
 
-     context = {"天気": weather, "最高気温": str(temp_max) + "度", "最低気温": str(temp_min) + "度",
+
+     context = {"日付": day ,"天気": weather, "最高気温": str(temp_max) + "度", "最低気温": str(temp_min) + "度",
                 "湿度": str(humidity) + "%"}
      print("--{0}'s Weather--".format(city_name))
      for k, v in context.items():
           print("{0}:{1}".format(k, v))
+
+     if 20 <= int(temp_min):
+          print('暑い日が続いていますね。')
 
 
 def friends_api():
