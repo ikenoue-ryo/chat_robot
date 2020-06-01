@@ -50,6 +50,8 @@ class Robot(object):
                 break
 
 class Question_Robot(Robot):
+    def __init__(self):
+        super().__init__(robot_name=DEFAULT_ROBOT_NAME)
 
 
     def some_question(self):
@@ -66,7 +68,7 @@ class Question_Robot(Robot):
                     break
             if answer == 'n' or answer == 'no':
                 break
-
+            break
 
 
 class Doing_Robot(Robot):
@@ -87,5 +89,8 @@ class Doing_Robot(Robot):
                 doing.friends_api()
                 break
             if want == '3':
+                doing.gnavi_api()
+                break
+            if want == '4':
                 doing.others()
                 break

@@ -1,13 +1,14 @@
 import requests
 import datetime
 import locale
-import os
+import json
+import urllib.request
 
 from project.DB import db
 import settings
 
 def tenki_api():
-     city_name = input('入力例: Tokyo\n')
+     city_name = input('どこの天気が知りたいですか？　(入力例:Tokyo)\n')
      app_id = settings.API_KEY
      URL = "https://api.openweathermap.org/data/2.5/weather?q={0},jp&units=metric&lang=ja&appid={1}".format(city_name, app_id)
 
@@ -50,6 +51,26 @@ def friends_api():
                 }
      for k, v in context.items():
           print('{0}:{1}'.format(k, v))
+
+
+def gnavi_api():
+     #レストラン検索APIのURL
+     Url = 'https://api.gnavi.co.jp/RestSearchAPI/v3/'
+     # パラメータの設定
+     params = {}
+     params['keyid'] = settings.GNAVI_API_KEY
+     params['freeword'] = 'ハンバーグ'
+     params['hit_per_page'] = 3
+     params['pref'] = 'PREF40'#福岡
+
+     result_api = requests.get(Url, params)
+     result_api = result_api.json()
+
+     # 福岡県
+     print(result_api['rest'][0]['code']['prefname'])
+     print(result_api['rest'][0]['name'])
+     print(result_api['rest'][0]['url'])
+     print(result_api['rest'][0]['address'])
 
 
 def others():
