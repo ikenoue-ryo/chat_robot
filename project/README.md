@@ -6,15 +6,13 @@ main.pyを実行するとスクリプトで実行されます。
 APIキーを取得後以下のように記載ください。
 </p>
 
-<p>
-.envファイル内------------------------------------
-・API_KEY=ここにopenweathermapのAPIキー
-　#リンク先：https://openweathermap.org/api
+<p>.envファイル内------------------------------------</p>
+<p>API_KEY=ここにopenweathermapのAPIキー
+　#リンク先：https://openweathermap.org/api</p>
 
-・GNAVI_API_KEY=ここにぐるなびのAPIキー
-　#リンク先：https://api.gnavi.co.jp/api/
-------------------------------------------------
-</p>
+<p>GNAVI_API_KEY=ここにぐるなびのAPIキー
+　#リンク先：https://api.gnavi.co.jp/api/</p>
+<p>------------------------------------------------</p>
 
 <h2>仕様</h2>
 スクリプトで実行する便利な対話型ロボットです。
