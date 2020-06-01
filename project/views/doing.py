@@ -5,6 +5,7 @@ import json
 import urllib.request
 
 from project.DB import db
+from project.views import city_search
 import settings
 
 def tenki_api():
@@ -59,18 +60,27 @@ def gnavi_api():
      # パラメータの設定
      params = {}
      params['keyid'] = settings.GNAVI_API_KEY
-     params['freeword'] = 'ハンバーグ'
      params['hit_per_page'] = 3
-     params['pref'] = 'PREF40'#福岡
+     #都道府県コードを取ってきて検索
+     city = input('お住いの都道府県を入力してください (例：東京都)\n')
+     params['pref'] = city_search.search(city)
+     #キーワード検索
+     freeword = input('キーワードを入力してください (例：焼肉)\n')
+     params['freeword'] = freeword
 
      result_api = requests.get(Url, params)
      result_api = result_api.json()
 
-     # 福岡県
-     print(result_api['rest'][0]['code']['prefname'])
-     print(result_api['rest'][0]['name'])
-     print(result_api['rest'][0]['url'])
-     print(result_api['rest'][0]['address'])
+     print('********************************')
+     print(city + 'の' + freeword + 'の検索結果を表示します。')
+     print('********************************')
+     #3件表示
+     for count in range(3):
+          # print(result_api['rest'][count]['code']['prefname'])
+          print(result_api['rest'][count]['name'])
+          print(result_api['rest'][count]['url'])
+          print(result_api['rest'][count]['address']+ '\n')
+     print('ぜひ行ってみてください。')
 
 
 def others():
