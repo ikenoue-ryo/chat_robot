@@ -1,5 +1,7 @@
 import datetime
 import locale
+import time
+import termcolor
 
 from project.DB import db
 from project.views import console, questions, doing
@@ -74,8 +76,9 @@ class Question_Robot(Robot):
 class Doing_Robot(Robot):
 
     def hearing(self):
-        print('なにをしたいですか？ [数字を入力]\n')
         while True:
+            wants = termcolor.colored('なにをしたいですか？ [数字を入力]\n', 'blue', attrs=['bold'])
+            print(wants)
             template = console.get_file_path('wants.txt')
             want = input(template.substitute({
                 'robot_name': self.robot_name,
@@ -84,16 +87,16 @@ class Doing_Robot(Robot):
 
             if want == '1':
                 doing.tenki_api()
-                break
+                time.sleep(3)
             if want == '2':
                 doing.friends_api()
-                break
+                time.sleep(3)
             if want == '3':
                 doing.gnavi_api()
-                break
+                time.sleep(3)
             if want == '4':
                 doing.search_youtube()
-                break
+                time.sleep(3)
             if want == '5':
                 doing.others()
-                break
+                time.sleep(3)
