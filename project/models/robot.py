@@ -56,7 +56,7 @@ class Question_Robot(Robot):
 
     def some_question(self):
         while True:
-            answer = input('質問に答えますか？ [yes/no]\n')
+            answer = input('はじめまして ' + self.user_name + 'さん。\n質問に答えますか？ [yes/no]\n')
             if answer == 'y' or answer == 'yes':
                 user_login = input('あなたの名前をもう一度教えてください\n')
                 user_login = user_login.title()

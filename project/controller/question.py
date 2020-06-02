@@ -6,12 +6,12 @@ def question_to_you():
     question_robot.auto_greeting()
     #DBにuser_nameがなければ新規ユーザーなので質問する処理
     persons = db.session.query(db.Person).all()
+    all_user = []
     for person in persons:
-        if not question_robot.user_name in person.user_name:
-            question_robot.some_question()
-        else:
-            break
-        break
+        all_user.append(person.user_name)
+    if not question_robot.user_name in all_user:
+        question_robot.some_question()
+
 
 
 def what_are_you_doing():
