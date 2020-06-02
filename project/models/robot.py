@@ -92,5 +92,8 @@ class Doing_Robot(Robot):
                 doing.gnavi_api()
                 break
             if want == '4':
+                doing.search_youtube()
+                break
+            if want == '5':
                 doing.others()
                 break

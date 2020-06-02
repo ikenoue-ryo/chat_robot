@@ -6,7 +6,12 @@ import urllib.request
 
 from project.DB import db
 from project.views import city_search
+from apiclient.discovery import build
 import settings
+
+YOUTUBE_API_KEY = settings.YOUTUBE_API_KEY
+youtube = build('youtube', 'v3', developerKey=YOUTUBE_API_KEY)
+
 
 def tenki_api():
      city_name = input('どこの天気が知りたいですか？　(入力例:Tokyo)\n')
@@ -81,6 +86,33 @@ def gnavi_api():
           print(result_api['rest'][count]['url'])
           print(result_api['rest'][count]['address']+ '\n')
      print('ぜひ行ってみてください。')
+
+
+
+def search_youtube():
+    print('Youtubeから再生数が多い動画を検索します。')
+    key_word = input('キーワードを入力してください\n')
+
+    search_response = youtube.search().list(
+    part='snippet',
+    #検索したい文字列を指定
+    q=key_word,
+    #視聴回数が多い順に取得
+    order='viewCount',
+    type='video',
+    ).execute()
+
+    print('********************************')
+    print(key_word + '　の検索結果を表示します。')
+    print('********************************')
+    # 3件表示
+    for count in range(3):
+        # print(search_response['items'][0])
+        print('チャンネル名：', search_response['items'][count]['snippet']['channelTitle'])
+        print('動画タイトル：', search_response['items'][count]['snippet']['title'])
+        print('https://www.youtube.com/watch?v=' + search_response['items'][count]['id']['videoId'] + '\n')
+    print('動画をお楽しみください。')
+
 
 
 def others():

@@ -8,10 +8,10 @@ APIキーを取得後以下のように記載ください。
 
 <p>.envファイル内------------------------------------</p>
 <p>API_KEY=ここにopenweathermapのAPIキー
-　#リンク先：https://openweathermap.org/api</p>
+　#取得先：https://openweathermap.org/api</p>
 
 <p>GNAVI_API_KEY=ここにぐるなびのAPIキー
-　#リンク先：https://api.gnavi.co.jp/api/</p>
+　#取得先：https://api.gnavi.co.jp/api/</p>
 <p>------------------------------------------------</p>
 
 <h2>仕様</h2>
@@ -26,6 +26,7 @@ APIキーを取得後以下のように記載ください。
 <li>ぐるなびAPIからレストランを紹介する</li>
 <li>友達のプロフィールを表示する（ユーザーが閲覧したいプロフィールを選択）</li>
 <li>ロボットが新規ユーザーに質問してプロフィールを作成する</li>
+<li>YoutubeAPIから動画検索できる</li>
 </ul>
 
 <h2>直近で導入したい機能について箇条書きする</h2>
