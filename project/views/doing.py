@@ -43,7 +43,7 @@ def tenki_api():
       print("{0}:{1}".format(k, v))
 
     if 20 <= int(temp_min):
-      print('暑い日が続いていますね。\n')
+        print('暑い日が続いていますね。\n')
 
 
 def friends_api():
