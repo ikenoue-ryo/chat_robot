@@ -44,6 +44,8 @@ def tenki_api():
 
     if 20 <= int(temp_min):
         print('暑い日が続いていますね。\n')
+        # family = input('ところで'+ user_name + 'さんは何人家族ですか？')
+        # db.save(family)
 
 
 def friends_api():

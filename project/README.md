@@ -32,6 +32,14 @@ APIキーを取得後以下のように記載ください。
 <li>YoutubeAPIから動画検索できる</li>
 </ul>
 
+
+<h2>実行結果画面</h2>
+<img src="https://user-images.githubusercontent.com/61681360/83609690-95dc5880-a5b9-11ea-895e-34a1a818e0a3.png">
+<img src="https://user-images.githubusercontent.com/61681360/83610021-f79cc280-a5b9-11ea-8845-335757845258.png">
+<img src="https://user-images.githubusercontent.com/61681360/83610208-156a2780-a5ba-11ea-9f96-ba523292533d.png">
+<img src="https://user-images.githubusercontent.com/61681360/83610274-287cf780-a5ba-11ea-9ffa-5c574a9fae04.png">
+
+
 <h2>直近で導入したい機能について箇条書きする</h2>
 <ul>
 <li>質問した内容を保存していく</li>
@@ -49,3 +57,5 @@ APIキーを取得後以下のように記載ください。
 <li>起動と同時にsiriが読み上げる。</li>
 <li>後々、機械学習に使える具体的なデータに仕上げる</li>
 </ul>
+
+

@@ -46,6 +46,6 @@ def save(user_info):
 
 
 #コマンド
-# sqlite3 pro_sqlite.db
+# sqlite3 pro_sqlite3.db
 # .tables
 # select * from users;
