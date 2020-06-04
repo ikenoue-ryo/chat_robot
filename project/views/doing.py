@@ -14,7 +14,7 @@ YOUTUBE_API_KEY = settings.YOUTUBE_API_KEY
 youtube = build('youtube', 'v3', developerKey=YOUTUBE_API_KEY)
 
 
-def tenki_api():
+def tenki_api(user_name):
     where = termcolor.colored('どこの天気が知りたいですか？　(入力例:Tokyo)\n', 'blue', attrs=['bold'])
     city_name = input(where)
     app_id = settings.API_KEY
@@ -44,8 +44,17 @@ def tenki_api():
 
     if 20 <= int(temp_min):
         print('暑い日が続いていますね。\n')
-        # family = input('ところで'+ user_name + 'さんは何人家族ですか？')
-        # db.save(family)
+
+
+    persons = db.session.query(db.Person).filter_by(user_name=user_name)
+    for person in persons:
+        if person.family == 0 :
+            #ユーザーの追加情報を取得
+            another_question = termcolor.colored('ところで、' + user_name + 'さんは何人家族ですか？\n', 'blue', attrs=['bold'])
+            family = input(another_question)
+            thank_you = termcolor.colored('ありがとうございます！\n', 'blue', attrs=['bold'])
+            print(thank_you)
+            db.add_save(user_name, family)
 
 
 def friends_api():

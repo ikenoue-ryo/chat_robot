@@ -10,6 +10,7 @@ from project.views import console, questions, doing
 DEFAULT_ROBOT_NAME = 'Roboko'
 
 class Robot(object):
+
     def __init__(self, robot_name=DEFAULT_ROBOT_NAME, user_name=''):
         self.robot_name = robot_name
         self.user_name = user_name
@@ -48,8 +49,8 @@ class Robot(object):
                     if self.user_name == person.user_name:
                         print(self.user_name +'さん、おかえりなさい\n')
                         break
-                    break
                 break
+
 
 class Question_Robot(Robot):
     def __init__(self):
@@ -73,8 +74,6 @@ class Question_Robot(Robot):
             break
 
 
-class Doing_Robot(Robot):
-
     def hearing(self):
         while True:
             wants = termcolor.colored('なにをしたいですか？ [数字を入力]\n', 'blue', attrs=['bold'])
@@ -86,7 +85,7 @@ class Doing_Robot(Robot):
             }))
 
             if want == '1':
-                doing.tenki_api()
+                doing.tenki_api(self.user_name)
                 time.sleep(3)
             if want == '2':
                 doing.friends_api()

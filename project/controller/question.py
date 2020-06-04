@@ -12,8 +12,5 @@ def question_to_you():
     if not question_robot.user_name in all_user:
         question_robot.some_question()
 
-
-
-def what_are_you_doing():
-    doing_robot = robot.Doing_Robot()
-    doing_robot.hearing()
+    #何がしたいか聞く
+    question_robot.hearing()

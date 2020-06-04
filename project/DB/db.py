@@ -11,10 +11,11 @@ class Person(Base):
     __tablename__ = 'users'
     id = sqlalchemy.Column(
         sqlalchemy.Integer, primary_key=True, autoincrement=True)
-    user_name = sqlalchemy.Column(sqlalchemy.String(14))
-    age = sqlalchemy.Column(sqlalchemy.String(14))
-    nickname = sqlalchemy.Column(sqlalchemy.String(14))
-    animal = sqlalchemy.Column(sqlalchemy.String(14))
+    user_name = sqlalchemy.Column(sqlalchemy.String(20))
+    age = sqlalchemy.Column(sqlalchemy.Integer)
+    family = sqlalchemy.Column(sqlalchemy.Integer, default=0, nullable=True)
+    nickname = sqlalchemy.Column(sqlalchemy.String(20))
+    animal = sqlalchemy.Column(sqlalchemy.String(20))
 
 #Baseを継承しているテーブルを一括して作成する
 #metadataはDBのいろんな情報を保持しているオブジェクト
@@ -41,7 +42,23 @@ def save(user_info):
     persons = session.query(Person).all()
     print('---DB出力結果---')
     for person in persons:
-        print(person.user_name, person.age, person.nickname, person.animal)
+        print(person.id, person.user_name, person.age, person.nickname, person.family, person.animal)
+    print('---DB出力結果---\n')
+
+
+#会話の中の質問から新たにユーザー情報を取得する
+def add_save(user_name, family):
+
+    user = session.query(Person).filter_by(user_name=user_name).first()
+    user.family = family
+
+    session.add(user)
+    session.commit()
+    # テーブルからデータをqueryで取り出す
+    persons = session.query(Person).all()
+    print('---DB出力結果---')
+    for person in persons:
+        print(person.id, person.user_name, person.age, person.nickname, person.family, person.animal)
     print('---DB出力結果---')
 
 
