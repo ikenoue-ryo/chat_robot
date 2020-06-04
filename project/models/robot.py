@@ -91,7 +91,7 @@ class Question_Robot(Robot):
                 doing.friends_api()
                 time.sleep(3)
             if want == '3':
-                doing.gnavi_api()
+                doing.gnavi_api(self.user_name)
                 time.sleep(3)
             if want == '4':
                 doing.search_youtube()
